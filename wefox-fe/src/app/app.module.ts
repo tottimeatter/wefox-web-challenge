@@ -5,18 +5,33 @@ import { ApiService } from 'src/services/api.service';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule} from '@angular/forms'
+
 import { MatTableModule } from '@angular/material/table'
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input';
+
+import { TableComponent } from './table/table.component'
+import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent,
+    NewCityDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

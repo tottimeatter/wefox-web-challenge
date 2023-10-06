@@ -1,9 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ApiService } from 'src/services/api.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
+    declarations: [AppComponent],
+    providers: [ApiService ],
+    imports: [HttpClientTestingModule],
+    schemas: [NO_ERRORS_SCHEMA]
   }));
 
   it('should create the app', () => {
@@ -12,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'wefox-fe'`, () => {
+  it(`should have as title 'Wefox web challenge'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('wefox-fe');
+    expect(app.title).toEqual('Wefox web challenge');
   });
 
-  it('should render title', () => {
+  it('should render table', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('wefox-fe app is running!');
+    expect(compiled.querySelector('table')).toBeTruthy();
   });
 });
