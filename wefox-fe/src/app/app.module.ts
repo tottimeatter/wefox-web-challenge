@@ -5,7 +5,7 @@ import { ApiService } from 'src/services/api.service';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { MatTableModule } from '@angular/material/table'
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +31,8 @@ import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.compon
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

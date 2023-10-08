@@ -1,11 +1,40 @@
-<h1 mat-dialog-title>New city</h1>
+<h1 mat-dialog-title>{{title}}</h1>
 <div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="name">
-  </mat-form-field>
+  <form [formGroup]="city" class="form">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Content</mat-label>
+      <textarea matInput formControlName="content"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Latitude</mat-label>
+      <input matInput formControlName="lat">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Longitude</mat-label>
+      <input matInput formControlName="long">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image_url">
+    </mat-form-field>
+  </form>
+  <div class="image-wrapper">
+    <img *ngIf="city.controls.image_url.value && !imageError; else defaultImage" [src]="city.controls.image_url.value" (error)="imageError = true">
+    <ng-template #defaultImage>
+      <img src="https://svg.template.creately.com/MIQyt1kde0t">
+      <span class="image-error-message" *ngIf="imageError">Error loading image</span>
+    </ng-template>
+  </div>
 </div>
-<div mat-dialog-actions>
+<mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="name" cdkFocusInitial>Ok</button>
-</div>
+  <button mat-button [mat-dialog-close]="city" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

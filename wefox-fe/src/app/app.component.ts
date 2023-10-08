@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/services/api.service';
 import { City } from 'src/types';
 import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +13,61 @@ import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.compon
 export class AppComponent {
   title = 'Wefox web challenge'
   cities: City[] = []
+  $getElemensSubs?: Subscription
 
   constructor(private apiService: ApiService, public dialog: MatDialog){}
 
   ngOnInit(){
-    this.apiService.getElements().subscribe((cities: City[]) => {
+    this.getCities()
+  }
+
+  getCities(){
+    this.$getElemensSubs = this.apiService.getElements().subscribe((cities: City[]) => {
       this.cities = cities
     })
   }
 
   addCity(){
     const dialogRef = this.dialog.open(NewCityDialogComponent, {
-      data: {},
+      height:'auto',
+      width: '980px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result)
+    dialogRef.afterClosed().subscribe(formControl => {
+      if(formControl){
+        this.apiService.createElement(formControl.value).subscribe((response) => {
+          this.getCities()
+        })
+      }
     });
+  }
+
+  deleteCity(id: string){
+    console.log(`Deleting entry with id: ${id}`)
+    this.apiService.removeElement(id).subscribe((response) => {
+      this.getCities()
+    })
+  }
+
+  selectCity(id: string){
+    this.apiService.showElement(id).subscribe((city: City) => {
+      this.showCityDetail(city)
+    })
+  }
+
+  showCityDetail(city: City){
+    const dialogRef = this.dialog.open(NewCityDialogComponent ,{
+      height: 'auto',
+      width: '980px',
+      data:{city: city}
+    })
+
+    dialogRef.afterClosed().subscribe(formControl => {
+      if(formControl){
+        this.apiService.updateElement(formControl.value).subscribe((result) => {
+          this.getCities()
+        })
+      }
+    })
   }
 }

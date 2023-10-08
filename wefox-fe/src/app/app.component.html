@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
 
-<app-table [dataSource]="cities"></app-table>
+<app-table [dataSource]="cities" (deleteEntryEvent)="deleteCity($event)" (selectEntryEvent)="selectCity($event)"></app-table>
 
-<button mat-button (click)="addCity()">Add city</button>
+<button mat-raised-button color="primary" (click)="addCity()">Add city</button>
