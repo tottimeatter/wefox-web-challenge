@@ -1,5 +1,7 @@
-<h1>{{title}}</h1>
+<div class="page-wrapper">
+  <h1>{{title}}</h1>
 
-<app-table [dataSource]="cities" (deleteEntryEvent)="deleteCity($event)" (selectEntryEvent)="selectCity($event)"></app-table>
+  <app-table [dataSource]="cities" (deleteEntryEvent)="deleteCity($event)" (selectEntryEvent)="selectCity($event)"></app-table>
 
-<button mat-raised-button color="primary" (click)="addCity()">Add city</button>
+  <button mat-raised-button color="primary" (click)="addCity()">Add city</button>
+</div>
