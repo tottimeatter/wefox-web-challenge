@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiService } from 'src/services/api.service';
 
@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { MatTableModule } from '@angular/material/table'
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
@@ -36,7 +36,14 @@ import { CityDialogComponent } from './city-dialog/city-dialog.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule
   ],
-  providers: [ApiService],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

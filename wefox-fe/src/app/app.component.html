@@ -3,7 +3,7 @@
 
   <app-table *ngIf="cities.length > 0; else loading" [dataSource]="cities" (deleteEntryEvent)="deleteCity($event)" (selectEntryEvent)="selectCity($event)"></app-table>
   <ng-template #loading>
-    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    <mat-progress-spinner id="spinner" color="primary" mode="indeterminate"></mat-progress-spinner>
   </ng-template>
   <!-- <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner> -->
 

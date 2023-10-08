@@ -32,7 +32,7 @@ export class CityDialogComponent implements OnInit {
       this.title = 'Edit city'
       this.city.setValue({
         id: this.data.city?.id,
-        title: this.data.city.title,
+        title: this.data.city?.title,
         content: this.data.city.content,
         lat: this.data.city.lat,
         long: this.data.city.long,
