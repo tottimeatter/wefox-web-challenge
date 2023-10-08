@@ -14,13 +14,13 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 
 import { TableComponent } from './table/table.component'
-import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.component';
+import { CityDialogComponent } from './city-dialog/city-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    NewCityDialogComponent
+    CityDialogComponent
   ],
   imports: [
     BrowserModule,

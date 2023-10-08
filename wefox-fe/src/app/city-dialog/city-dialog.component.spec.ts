@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewCityDialogComponent } from './new-city-dialog.component';
+import { CityDialogComponent } from './city-dialog.component';
 
 describe('NewCityDialogComponent', () => {
-  let component: NewCityDialogComponent;
-  let fixture: ComponentFixture<NewCityDialogComponent>;
+  let component: CityDialogComponent;
+  let fixture: ComponentFixture<CityDialogComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewCityDialogComponent]
+      declarations: [CityDialogComponent]
     });
-    fixture = TestBed.createComponent(NewCityDialogComponent);
+    fixture = TestBed.createComponent(CityDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

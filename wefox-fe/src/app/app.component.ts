@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/services/api.service';
 import { City } from 'src/types';
-import { NewCityDialogComponent } from './new-city-dialog/new-city-dialog.component';
+import { CityDialogComponent } from './city-dialog/city-dialog.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   addCity(){
-    const dialogRef = this.dialog.open(NewCityDialogComponent, {
+    const dialogRef = this.dialog.open(CityDialogComponent, {
       height:'auto',
       width: '980px'
     });
@@ -56,7 +56,7 @@ export class AppComponent {
   }
 
   showCityDetail(city: City){
-    const dialogRef = this.dialog.open(NewCityDialogComponent ,{
+    const dialogRef = this.dialog.open(CityDialogComponent ,{
       height: 'auto',
       width: '980px',
       data:{city: city}

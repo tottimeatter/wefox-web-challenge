@@ -4,11 +4,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { City } from 'src/types';
 
 @Component({
-  selector: 'app-new-city-dialog',
-  templateUrl: './new-city-dialog.component.html',
-  styleUrls: ['./new-city-dialog.component.css']
+  selector: 'app-city-dialog',
+  templateUrl: './city-dialog.component.html',
+  styleUrls: ['./city-dialog.component.css']
 })
-export class NewCityDialogComponent implements OnInit {
+export class CityDialogComponent implements OnInit {
 
   title = 'New city'
   name: string = ''
@@ -23,7 +23,7 @@ export class NewCityDialogComponent implements OnInit {
   })
 
   constructor(
-    public dialogRef: MatDialogRef<NewCityDialogComponent>,
+    public dialogRef: MatDialogRef<CityDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {city:City},
   ){}
 
