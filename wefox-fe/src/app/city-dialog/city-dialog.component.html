@@ -3,22 +3,22 @@
   <form [formGroup]="city" class="form">
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="title" required>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Content</mat-label>
-      <textarea matInput formControlName="content"></textarea>
+      <textarea matInput formControlName="content" required></textarea>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Latitude</mat-label>
-      <input matInput formControlName="lat">
+      <input matInput formControlName="lat" required>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Longitude</mat-label>
-      <input matInput formControlName="long">
+      <input matInput formControlName="long" required>
     </mat-form-field>
 
     <mat-form-field>
@@ -36,5 +36,5 @@
 </div>
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="city" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

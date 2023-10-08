@@ -22,8 +22,13 @@ export class AppComponent {
   }
 
   getCities(){
-    this.$getElemensSubs = this.apiService.getElements().subscribe((cities: City[]) => {
-      this.cities = cities
+    this.$getElemensSubs = this.apiService.getElements().subscribe({
+      next: (cities: City[]) => {
+        this.cities = cities
+      },
+      error: error => {
+        alert(error.statusText)
+      }
     })
   }
 
@@ -35,8 +40,13 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(formControl => {
       if(formControl){
-        this.apiService.createElement(formControl.value).subscribe((response) => {
-          this.getCities()
+        this.apiService.createElement(formControl.value).subscribe({
+          next: (response) => {
+            this.getCities()
+          },
+          error: error => {
+            alert(error.statusText)
+          }
         })
       }
     });
@@ -44,8 +54,13 @@ export class AppComponent {
 
   deleteCity(id: string){
     console.log(`Deleting entry with id: ${id}`)
-    this.apiService.removeElement(id).subscribe((response) => {
-      this.getCities()
+    this.apiService.removeElement(id).subscribe({
+      next: (response) => {
+        this.getCities()
+      },
+      error: error => {
+        alert(error.statusText)
+      }
     })
   }
 
@@ -64,8 +79,13 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(formControl => {
       if(formControl){
-        this.apiService.updateElement(formControl.value).subscribe((result) => {
-          this.getCities()
+        this.apiService.updateElement(formControl.value).subscribe({
+          next: (response) => {
+            this.getCities()
+          },
+          error: error => {
+            alert(error.statusText)
+          }
         })
       }
     })

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { City } from 'src/types';
 
@@ -14,11 +14,11 @@ export class CityDialogComponent implements OnInit {
   name: string = ''
   imageError = false;
   city = new FormGroup({
-    id: new FormControl(''),
-    title: new FormControl(''),
-    content: new FormControl(''),
-    lat: new FormControl(''),
-    long: new FormControl(''),
+    id: new FormControl('', Validators.required),
+    title: new FormControl('', Validators.required),
+    content: new FormControl('', Validators.required),
+    lat: new FormControl('', Validators.required),
+    long: new FormControl('', Validators.required),
     image_url: new FormControl('')
   })
 
@@ -43,6 +43,13 @@ export class CityDialogComponent implements OnInit {
 
   cancel(){
     this.dialogRef.close(undefined)
+  }
+
+  save(){
+    this.city.markAllAsTouched()
+    if(!this.city.invalid){
+      this.dialogRef.close(this.city)
+    }
   }
 
 }
