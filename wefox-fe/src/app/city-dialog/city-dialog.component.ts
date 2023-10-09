@@ -14,7 +14,7 @@ export class CityDialogComponent implements OnInit {
   name: string = ''
   imageError = false;
   city = new FormGroup({
-    id: new FormControl('', Validators.required),
+    id: new FormControl(''),
     title: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
     lat: new FormControl('', Validators.required),
@@ -46,6 +46,7 @@ export class CityDialogComponent implements OnInit {
   }
 
   save(){
+    debugger
     this.city.markAllAsTouched()
     if(!this.city.invalid){
       this.dialogRef.close(this.city)
